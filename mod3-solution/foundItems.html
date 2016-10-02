@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="row" ng-repeat="item in narrowDown.found">
+    <div class="col-md-1">{{ item.short_name }}</div>
+    <div class="col-md-2">{{ item.name }}</div>
+    <div class="col-md-6">{{ item.description }}</div>
+    <div class="col-md-3">
+      <button ng-click="narrowDown.onRemove({index: $index});">
+        Don't want this one!
+      </button>
+    </div>
+<!--     <li ng-repeat="item in narrowDown.found">
+      {{$index}}, {{ item.short_name }}, {{ item.name }}, {{item.description}} 
+      <button ng-click="narrowDown.onRemove({index: $index});">
+        Don't want this one!
+      </button>
+    </li>
+  </ul>
+ -->  <div ng-if="narrowDown.found.length === 0" class="text-info">Nothing found</div>
+</div>
