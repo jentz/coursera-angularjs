@@ -8,12 +8,5 @@
         Don't want this one!
       </button>
     </div>
-<!--     <li ng-repeat="item in narrowDown.found">
-      {{$index}}, {{ item.short_name }}, {{ item.name }}, {{item.description}} 
-      <button ng-click="narrowDown.onRemove({index: $index});">
-        Don't want this one!
-      </button>
-    </li>
-  </ul>
- -->  <div ng-if="narrowDown.found.length === 0" class="text-info">Nothing found</div>
 </div>
+<div ng-if="narrowDown.found.length === 0" class="text-info">Nothing found</div>
