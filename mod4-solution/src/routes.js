@@ -2,7 +2,8 @@
 'use strict';
 
 angular.module('MenuApp')
-.config(RoutesConfig);
+.config(RoutesConfig)
+.run(RunFunction);
 
 RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 function RoutesConfig($stateProvider, $urlRouterProvider) {
@@ -22,7 +23,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   // Menu categories
   .state('categories', {
     url: '/categories',
-    templateUrl: 'src/menuapp/templates/main-categories.template.html',
+    templateUrl: 'src/menuapp/templates/categories.template.html',
     controller: 'CategoriesController as mainList',
     resolve: {
       categories: ['MenuDataService', function (MenuDataService) {
@@ -34,7 +35,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   // Item detail
   .state('itemDetail', {
     url: '/items/{categoryId}',
-    templateUrl: 'src/menuapp/templates/item-detail.template.html',
+    templateUrl: 'src/menuapp/templates/items.template.html',
     controller: 'ItemsController as itemDetail',
     resolve: {
       items: ['$stateParams', 'MenuDataService',
@@ -42,6 +43,14 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
               return MenuDataService.getItemsForCategory($stateParams.categoryId);
             }]
     }
+  });
+}
+
+RunFunction.$inject = ['$rootScope']
+
+function RunFunction($rootScope) {
+  $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+    console.log(error);
   });
 }
 

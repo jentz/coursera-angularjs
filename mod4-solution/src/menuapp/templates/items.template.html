@@ -1,5 +1,15 @@
-<ul>
-  <li ng-repeat="item in $ctrl.items">
-    {{ item.short_name }} {{ item.name }} {{ item.description }}
+<a ui-sref="home">Home</a> &lt; <a ui-sref="categories">Categories</a> &lt; <span>Items</span>
+
+<h3>Items in the category: &nbsp; {{ itemDetail.category }}</h3>
+<ol>
+  <li ng-repeat="item in itemDetail.items">
+    <h3>{{ $index + 1 }}. {{ item.name }}</h3>
+    <div>
+      <span>Item short name:</span> {{ item.short_name }} 
+    </div>
+    
+    <div>
+      <span>Item description:</span> {{ item.description }}
+    </div>
   </li>
 </ul>
